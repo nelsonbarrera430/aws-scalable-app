@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aplicación Escalable en AWS</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(145deg, #121212, #1f1f1f);
+      color: #f1f1f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .instance-box {
+      background: #222;
+      border-radius: 15px;
+      padding: 20px 40px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px rgba(0, 123, 255, 0.3);
+      text-align: center;
+    }
+    .loading {
+      font-size: 1rem;
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 AWS Scalable App</h1>
+  <div class="instance-box">
+    <p class="loading">Cargando nombre de instancia...</p>
+  </div>
+  <script>
+    fetch('/api/instance')
+      .then(res => res.json())
+      .then(data => {
+        document.querySelector('.instance-box').innerHTML =
+          `<strong>Instancia:</strong> ${data.instance}`;
+      });
+  </script>
+</body>
+</html>
